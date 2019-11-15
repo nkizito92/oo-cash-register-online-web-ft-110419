@@ -1,18 +1,20 @@
 require 'pry'
 class CashRegister
-   attr_accessor :total, :discount, :items, :void_last_transaction
+   attr_accessor :total, :discount, :items, :void_last_transaction, :priced 
   def initialize(discount=0)
     @total = 0
     @discount = discount
-    @items
+    @items = []
+    @priced = []
   end 
   
   def add_item(title,price, quantity=1)
     @total += price*quantity
     quantity.times do 
+      @priced.push(title,price)
       @items.push(title)
     end
-  end
+  end 
   
   def apply_discount 
      @total -= (@total*(@discount/100.00)).to_i
@@ -20,18 +22,13 @@ class CashRegister
   end 
   
   def items
-<<<<<<< HEAD
     @items
   end 
+  
+  
+  # find last items prices 
   def void_last_transaction
-    
-=======
-    add_item.each do |produ|
-      # add all items to an array 
-      @items.push(produ)
-    end 
-    #return the array 
-    @items
->>>>>>> 5341d210d38021cfff8b1e673c2504fd93fc3d78
+    # binding.pry
+      @total - @priced.last
   end 
 end 
