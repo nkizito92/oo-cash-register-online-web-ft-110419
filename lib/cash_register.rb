@@ -29,6 +29,6 @@ class CashRegister
   # find last items prices 
   def void_last_transaction
     # binding.pry
-      @total == @total - @priced.last 
+     @total - @priced.last 
   end 
 end 
