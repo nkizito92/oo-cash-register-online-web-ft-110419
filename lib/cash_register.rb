@@ -28,6 +28,6 @@ class CashRegister
   
   # find last item's prices 
   def void_last_transaction
-     @total - @priced.last 
+     @total - @priced.last.uniq
   end 
 end 
